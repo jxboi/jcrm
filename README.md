@@ -4,11 +4,17 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter5):** scored 8.9/11 (blind score, Opus 5.5, live) — Content,
-Imagery and Accessibility at 8.0; every rubric category is climbed
+**Latest (iter6):** scored 8.8/11 (blind score, Opus 5.5, live) — Visual,
+Content and Imagery at 8.0/8.0/7.0; every rubric category is climbed
 toward 9.0. Best so far: iter3 at 9.0.
 
-## What's in iter5
+## What's in iter6
+
+Iter6 fixes: deal buttons' accessible names start with the company
+name, custom spaces reorder with Alt+Arrow, space rows use a
+briefcase icon, the pipeline chip sends its own label, focus outlines
+are 2px, the search box has a hover state, and a blur-cancelled drag
+no longer lets the trailing click navigate.
 
 - Main chat with **Jo**, an animated companion (sage-green + cream, inline
   SVG/CSS) — tap Jo to open **Today activities**
