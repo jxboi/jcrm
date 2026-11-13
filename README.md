@@ -4,9 +4,24 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter13):** scored 9.0/11 (blind score, Opus 5.5, live) — every
-category at 9.0 or above except Imagery at 8.0 (the illustrated Jo
-ceiling). Overall 9.0, just under the iter10–iter12 best of 9.1.
+**Latest (iter14):** scored 8.9/11 (blind score, Opus 5.5, live) — every
+category at 8.0 or above; Imagery at 8.0 (the illustrated Jo ceiling),
+Component and Completeness at 8.0 (Feed prompt pill and Ideas rows
+still missing). Overall 8.9, just under the iter10–iter12 best of 9.1.
+
+## What's in iter14
+
+Iter14 makes the bottom nav pill translucent glass, the same treatment
+class as iter13's header fix: the pill is white at 48% with a faint
+border and 9px blur, so content scrolling behind it shows through
+blurred, as in the real Muse Feed and Ideas tabs. The dock floats over
+the scrolling content and `main` runs the full viewport height behind
+it, with bottom padding compensating — at rest nothing moves: nav,
+dock, composer and thread sit exactly where iter13 had them. The
+composer input stays opaque white, and the glass works in dark theme
+too. The one honest limit: the Feed tab is too short for anything to
+pass under the nav, so the glass only reads on Chat and wherever
+content actually scrolls.
 
 ## What's in iter13
 
