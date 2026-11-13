@@ -4,16 +4,13 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter7):** scored 8.9/11 (blind score, Opus 5.5, live) — Visual
-and Content at 8.0; every rubric category is climbed toward 9.0. Best
-so far: iter3 at 9.0.
+**Latest (iter8):** scored 8.6/11 (blind score, Opus 5.5, live) — Content
+at 7.0 is the biggest gap (the sidebar explainer text); every rubric category
+is climbed toward 9.0. Best so far: iter3 at 9.0.
 
-## What's in iter7
+## What's in iter8
 
-Iter7 fixes: a blur-cancelled drag no longer swallows the next
-keyboard Enter, the sidebar scroll area fades a cut-off row instead
-of hard-cropping it, and the workspace name shows once on desktop
-(the live name moves to the sidebar footer when docked).
+Iter8 fixes: an open space carries the current state (its sidebar row takes aria-current, Main chat loses it, the main landmark is named for the space), the docked sidebar shows 4 of 5 side chats (shorter explainer + tighter desktop divider margins), and the Settings caption follows the live workspace name.
 
 - Main chat with **Jo**, an animated companion (sage-green + cream, inline
   SVG/CSS) — tap Jo to open **Today activities**
