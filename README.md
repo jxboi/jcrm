@@ -4,13 +4,14 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter8):** scored 8.6/11 (blind score, Opus 5.5, live) — Content
-at 7.0 is the biggest gap (the sidebar explainer text); every rubric category
-is climbed toward 9.0. Best so far: iter3 at 9.0.
+**Latest (iter9):** scored 8.9/11 (blind score, Opus 5.5, live) — Content
+at 10, Performance at 10; Visual, Imagery and Interaction at 8.0 are the
+remaining gaps. Every rubric category is climbed toward 9.0. Best so far:
+iter3 at 9.0.
 
-## What's in iter8
+## What's in iter9
 
-Iter8 fixes: an open space carries the current state (its sidebar row takes aria-current, Main chat loses it, the main landmark is named for the space), the docked sidebar shows 4 of 5 side chats (shorter explainer + tighter desktop divider margins), and the Settings caption follows the live workspace name.
+Iter9 fixes: the bottom nav now sits below the ask input (composer above, nav at the very bottom edge, tab order follows); side chats carry the current state (aria-current + main landmark named for the thread); the anchor sidebar explainer text is restored verbatim; divider margins are back to 12px with 4 of 5 side chats visible at desktop; the toast clears the bottom dock; Library cards group icon + title; a skip link to main content; Jo's name pill is larger (98px/22px desktop) with a bigger face.
 
 - Main chat with **Jo**, an animated companion (sage-green + cream, inline
   SVG/CSS) — tap Jo to open **Today activities**
