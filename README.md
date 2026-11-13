@@ -4,18 +4,20 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter12):** scored 9.1/11 (blind score, Opus 5.5, live) — every
+**Latest (iter13):** scored 9.0/11 (blind score, Opus 5.5, live) — every
 category at 9.0 or above except Imagery at 8.0 (the illustrated Jo
-ceiling). Overall 9.1 ties iter10 and iter11 as the best so far.
+ceiling). Overall 9.0, just under the iter10–iter12 best of 9.1.
 
-## What's in iter12
+## What's in iter13
 
-Iter12 is a bug fix, not a redesign: every text field in the page is now
-16px (composer, sidebar search, workspace rename, space-name fields), so
-iOS Safari no longer auto-zooms the page when you tap the composer — the
-zoom used to cut the send button and the pipeline chevrons off the right
-edge on a real iPhone. The viewport settings are untouched (user zoom
-still works); nothing else changed.
+Iter13 is a header fidelity fix, from Jia comparing the Jo header
+against the real Muse header: the ring around Jo's circle is gone (a
+plain white disc now, as in Muse); the Jo name pill is translucent
+glass with a faint light border and blur; the pill sits 8px higher,
+overlapping the bottom of Jo's drawn body; and the header floats over
+the page content with a blurred backdrop instead of sitting on flat
+white. Jo herself is unchanged, and nothing else moved — the thread
+sits exactly where it did in iter12.
 
 - Main chat with **Jo**, an animated companion (sage-green + cream, inline
   SVG/CSS) — tap Jo to open **Today activities**
