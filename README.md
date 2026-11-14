@@ -4,14 +4,33 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter21):** scored 9.3/11 (blind score, Opus 5.5, live, on the
-official rubric — target every category ≥ 9.5, not met). Layout 9.2,
-Visual 8.8, Content 9.3, Component 9.4, Imagery 9.0, Interaction 9.4,
-Responsive 9.5, Accessibility 9.5, Design 9.2, Completeness 9.4,
-Performance 10. Overall 9.3 — a small dip from the iter17–18–20 best
-of 9.4. This is the latest of the iter19–21 batch (Jia's batch rule:
-complete 3 iterations, then push once), so the live page tracks iter21
-even though iter19 (9.3) and iter20 (9.4) were scored in the same batch.
+**Latest (iter24):** scored 9.1/11 (blind score, Opus 5.5, live, on the
+official rubric — target every category ≥ 9.5, not met). Layout 9,
+Visual 8, Content 9, Component 9, Imagery 9, Interaction 9,
+Responsive 10, Accessibility 9, Design 9, Completeness 9,
+Performance 10. Overall 9.1 — a dip from the iter17–18–20–23 best
+of 9.4. This is the latest of the iter22–24 batch (Jia's batch rule:
+complete 3 iterations, then push once), so the live page tracks iter24
+even though iter22 (9.2) and iter23 (9.4) were scored in the same batch.
+The scorer's biggest gap (Visual 8 — the Jo pill's missing outline and
+the title weights) did not hold against the references: the ring it saw
+is our own old build's pill, the real Muse pill is borderless, and the
+reference titles and row names are bold.
+
+## What's in iter24
+
+Iter24 finishes the batch's imagery and sidebar work. All five side chats
+now sit above the sidebar footer at rest at 1440 and in the phone drawer
+(row 5 clears the footer by 56px at 1440, 40px at 390), with the fade
+(44px) appearing only while more is hidden below. The Library Space rows
+carry illustrated icons (blue easel, blue person disc, paned window) and
+the deal owners are illustrated portraits instead of initials circles;
+the chat pipeline card still shows no owners. Every :hover rule now sits
+inside @media(hover:hover), so taps leave no stuck fill while desktop
+hover is unchanged. Jo's pill is wider and taller (111% of the avatar's
+width, 39% of its height), borderless with the soft shadow kept. The
+subtitle lines are gone on every tab screen and Library shows no visible
+title, matching the references.
 
 ## What's in iter21
 
