@@ -4,11 +4,30 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter16):** scored 8.9/11 (blind score, Opus 5.5, live, on the
-official rubric — target every category ≥ 9.5, not met). Layout 8.5,
-Visual 8.5, Content 9.0, Component 9.0, Imagery 8.5, Interaction 9.3,
-Responsive 9.0, Accessibility 9.0, Design 8.0, Completeness 9.0,
-Performance 10. Overall 8.9, just under the iter10–iter12 best of 9.1.
+**Latest (iter17):** scored 9.4/11 (blind score, Opus 5.5, live, on the
+official rubric — target every category ≥ 9.5, not met). Layout 9.3,
+Visual 9.2, Content 9.6, Component 9.5, Imagery 8.8, Interaction 9.5,
+Responsive 9.4, Accessibility 9.5, Design 9.2, Completeness 9.6,
+Performance 10. Overall 9.4 — a new best, above the iter10–iter12
+best of 9.1.
+
+## What's in iter17
+
+Iter17 fixes the chips-at-rest collision from iter16: the thread now
+opens scrolled to the latest message (and stays that way after each
+new message), so the last line of Jo's reply clears the chips by 41px
+at phone width and 48px at desktop; the chips dock has a fading
+backdrop so nothing shows through between the chips; the chips
+left-align under Jo's message at 1440; and their labels are 14px.
+Feed is now the flat hairline list from the reference — icon gutter,
+no card chrome, same three updates. The trade-off the scorer docked:
+scrolling to the latest on load pushes the user's opening question
+bubble under the frosted header, where it shows as a grey smudge next
+to Jo at every width. That is the single biggest gap and the top
+candidate for the next iteration. (The verify suite's one flag — the
+clearance sweep on chip hover — was checked live by both the
+orchestrator and the scorer and is not a defect: the hovered chip is
+a self-contained pill 5px above the composer.)
 
 ## What's in iter16
 
