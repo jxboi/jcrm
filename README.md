@@ -4,12 +4,33 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter17):** scored 9.4/11 (blind score, Opus 5.5, live, on the
+**Latest (iter18):** scored 9.4/11 (blind score, Opus 5.5, live, on the
 official rubric — target every category ≥ 9.5, not met). Layout 9.3,
-Visual 9.2, Content 9.6, Component 9.5, Imagery 8.8, Interaction 9.5,
-Responsive 9.4, Accessibility 9.5, Design 9.2, Completeness 9.6,
-Performance 10. Overall 9.4 — a new best, above the iter10–iter12
-best of 9.1.
+Visual 9.2, Content 9.4, Component 9.5, Imagery 9.2, Interaction 9.6,
+Responsive 9.4, Accessibility 9.4, Design 9.3, Completeness 9.6,
+Performance 10. Overall 9.4 — ties the iter17 best of 9.4.
+
+## What's in iter18
+
+Iter18 fixes the header smudge from iter17: the thread now opens
+scrolled to the top of the latest exchange, so the question sits
+readable 12px below the header at phone widths (14px at desktop),
+while a new message still settles with the latest reply fully above
+the chips. The chips are one scrollable row at phone widths (39px
+tall, down from three stacked rows), Feed rows are tighter (114px at
+phone, down from 168px) with small illustrated icons in Jo's
+language and no redundant "View update" text, and Escape in Settings
+now steps back to the list before closing the sheet. The trade-off
+the scorer docked: at first load the last line of Jo's reply ends
+40px under the chips row at 390, so the chips sit on half a line of
+text next to a cut-off chip and the first screen looks clipped. The
+Jo name pill is also too big — it covers the lower ~40% of the
+avatar, where the reference pill only overlaps the bottom edge.
+Those two are the top candidates for the next iteration. (The
+verify suite's one flag — the clearance sweep on chip hover — was
+checked live by both the orchestrator and the scorer and is not a
+defect: the hovered chip is a self-contained pill 5px above the
+composer.)
 
 ## What's in iter17
 
