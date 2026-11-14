@@ -4,10 +4,27 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter15):** scored 9.0/11 (blind score, Opus 5.5, live) — every
-category at 8.0 or above; Imagery at 8.0 (the illustrated Jo ceiling),
-Interaction at 8.0 (see below). Overall 9.0, just under the iter10–iter12
-best of 9.1.
+**Latest (iter16):** scored 8.9/11 (blind score, Opus 5.5, live, on the
+official rubric — target every category ≥ 9.5, not met). Layout 8.5,
+Visual 8.5, Content 9.0, Component 9.0, Imagery 8.5, Interaction 9.3,
+Responsive 9.0, Accessibility 9.0, Design 8.0, Completeness 9.0,
+Performance 10. Overall 8.9, just under the iter10–iter12 best of 9.1.
+
+## What's in iter16
+
+Iter16 fixes all three defects from the previous round: the suggestion
+chips now sit in a pinned row above the composer (visible and clickable
+at 390, 320 and 1440, light and dark, with hover feedback), the Ideas
+view is three rows with hairline dividers like the reference (each row
+opens a chat with Jo about that idea), and the nav glass is stronger
+(36% fill, 4px blur) with a gradient active segment. The trade-off the
+scorer docked: at rest the pinned chips row covers the last two lines
+of Jo's reply text — the thread only clears the chips once you scroll
+to the bottom. That collision is the single biggest gap and the top
+candidate for the next iteration. (A first scoring run came back 9.2
+but on the scorer's own paraphrased criteria — the clean staging had
+missed the master rubric — so it was re-run properly; the re-run's 8.9
+is the official score.)
 
 ## What's in iter15
 
