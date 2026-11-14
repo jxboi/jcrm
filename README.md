@@ -4,10 +4,25 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter14):** scored 8.9/11 (blind score, Opus 5.5, live) — every
+**Latest (iter15):** scored 9.0/11 (blind score, Opus 5.5, live) — every
 category at 8.0 or above; Imagery at 8.0 (the illustrated Jo ceiling),
-Component and Completeness at 8.0 (Feed prompt pill and Ideas rows
-still missing). Overall 8.9, just under the iter10–iter12 best of 9.1.
+Interaction at 8.0 (see below). Overall 9.0, just under the iter10–iter12
+best of 9.1.
+
+## What's in iter15
+
+Iter15 adds the Feed prompt pill the real Muse Feed tab has: a
+full-width rounded pill below the "Feed" title and above the first
+card, grey placeholder text ("Make me a feed about my interests. Keep
+me up to date.") that truncates with an ellipsis, 16px text. Tapping
+it focuses the input; submitting with Enter sends the text to Jo as a
+chat message, so Jo replies — never a dead end. Empty submit sends
+nothing; Escape blurs it. The cards shift down exactly the pill's
+48px; the title stays put. The scorer's one new finding this round:
+the suggestion chips sit behind the opaque composer at rest, so the
+thread's follow-ups are invisible and unclickable on first view until
+you scroll — a real defect, and the top candidate for the next
+iteration.
 
 ## What's in iter14
 
