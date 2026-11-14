@@ -4,11 +4,49 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter18):** scored 9.4/11 (blind score, Opus 5.5, live, on the
-official rubric — target every category ≥ 9.5, not met). Layout 9.3,
-Visual 9.2, Content 9.4, Component 9.5, Imagery 9.2, Interaction 9.6,
-Responsive 9.4, Accessibility 9.4, Design 9.3, Completeness 9.6,
-Performance 10. Overall 9.4 — ties the iter17 best of 9.4.
+**Latest (iter21):** scored 9.3/11 (blind score, Opus 5.5, live, on the
+official rubric — target every category ≥ 9.5, not met). Layout 9.2,
+Visual 8.8, Content 9.3, Component 9.4, Imagery 9.0, Interaction 9.4,
+Responsive 9.5, Accessibility 9.5, Design 9.2, Completeness 9.4,
+Performance 10. Overall 9.3 — a small dip from the iter17–18–20 best
+of 9.4. This is the latest of the iter19–21 batch (Jia's batch rule:
+complete 3 iterations, then push once), so the live page tracks iter21
+even though iter19 (9.3) and iter20 (9.4) were scored in the same batch.
+
+## What's in iter21
+
+Iter21 finishes the batch's first-load work and rebuilds Library and
+Goals to match their references. The dock area is solid from the
+chips band's top edge to the viewport bottom, so no thread text can
+show below the composer at any scroll position (verified at 375×667,
+390×664, 390×844, 320×640 and 1440 open and collapsed), and the
+first-load scroll is set from the available height — no text line
+straddles the band's top edge at any of those sizes, and the question
+stays readable below the header. Library is now a Files/Media
+segmented list: Files shows the 4 saved items as flat rows with
+coloured file-type art (green report icon, blue DOCX, white MD page,
+dark-blue HTML), bold name, grey subtitle and a ⋮ menu; Media shows a
+2-column grid of 4 illustrated thumbnail tiles; the selection and
+sort-by-name persist across reload. Goals is a tracking checklist
+with a green "Tracking" header, checkbox rows carrying the progress
+in the grey description, and a row ⋮ menu with working "Mark done"
+and "View details" (toggles persist with a strikethrough). The Jo
+name pill has a visible grey hairline edge, the deal sheet's "Work on
+this with Jo" aligns with the body text, a ⋯ circle sits at the
+top-right of every tab screen with working menus, and the Ideas
+headings run H1 → H2 → H3. The trade-offs the scorer docked: Visual
+fidelity is 8.8 — the tab-screen type is about one step smaller and
+denser than the references (Feed body 13px, Goals descriptions 14px,
+Library subtitles 13px vs ~16–17pt), the DOCX icon draws a doubled
+"W W", and the Media grid's left column sits 10px lower than the
+right. And first load at 1440 with the sidebar collapsed is still
+wrong: the question bubble starts 6px under the header and Jo's
+closing line sits entirely behind the dock, so the pipeline card
+shows with its bottom edge cut off. The ⋯ menu fades in on open but
+closes instantly. (The verify suite's one recurring flag — the
+clearance sweep on chip hover — was checked live by both the
+orchestrator and the scorer and is not a defect: the hovered chip is
+a self-contained pill 5px above the composer.)
 
 ## What's in iter18
 

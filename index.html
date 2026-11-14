@@ -41,6 +41,74 @@ dialog[data-swap] .sheet-body{animation:swap-fwd .32s var(--ease) both}dialog[da
 .sidebar-scroll.drag-lock{overflow:hidden;touch-action:none}
 .feed-list{display:flex;flex-direction:column}.feed-row{display:grid;grid-template-columns:48px minmax(0,560px) auto;align-items:center;justify-content:start;column-gap:2px;width:100%;padding:14px 2px 14px 0;text-align:left;border-top:1px solid var(--line);border-radius:0;background:transparent}.feed-row:first-child{border-top:0}.feed-row:hover{background:var(--hover)}.feed-icon{width:48px;display:flex;justify-content:center}.feed-art{width:42px;height:42px}.feed-chev{width:18px;height:18px;margin-left:6px;color:var(--muted)}.feed-copy{min-width:0}.feed-row h2{font-size:16px;line-height:1.35;margin-bottom:3px}.feed-row p{font-size:13px;line-height:1.5;color:var(--muted)}.feed-row .card-meta{margin:6px 0 0}.feed-prompt{margin:-13px 0 13px}.feed-prompt input{display:block;width:100%;height:48px;padding:11px 15px;border:1px solid var(--line);border-radius:999px;background:var(--bg);font-size:16px;line-height:24px;text-overflow:ellipsis}
 @media(max-width:600px){.suggestions-dock{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain}.suggestions-dock::-webkit-scrollbar{display:none}.suggestions-dock .chip{flex:0 0 auto;white-space:nowrap}}
+
+/* iter19: clear chip band, edge-overlapping Jo label, tablet alignment and rounded return focus. */
+.suggestions-band{position:absolute;left:0;right:0;bottom:calc(100% + 6px);isolation:isolate;pointer-events:none}
+.suggestions-band:has(.chip)::before{content:"";position:absolute;inset:0 -25px -6px;background:var(--bg);z-index:-1}
+.suggestions-band .suggestions-dock{position:relative;left:0;right:0;bottom:auto}
+.suggestions-dock:not(:empty){background:var(--bg)}
+.app-header .companion{height:96px}
+.app-header .companion .jo-art{position:absolute;top:0;left:50%;transform:translateX(-50%)}
+.app-header .name-pill{top:calc(100% - 3px);bottom:auto;min-width:72px;padding:3px 18px;font-size:20px;line-height:26px}
+.app-header{height:152px}
+main{padding-top:152px}
+@media(min-width:601px){.suggestions-dock{justify-content:flex-start}}
+@media(min-width:1024px){.suggestions-band{left:-1px;right:-1px}.suggestions-band:has(.chip)::before{left:-40px;right:-40px}.app-header{height:177px}.app-header .companion{height:116px}main{padding-top:177px}}
+@media(max-width:600px){.app-header{height:144px}.app-header .companion{height:99px}.app-header .name-pill{min-width:64px;padding:2px 16px;font-size:18px;line-height:24px}main{padding-top:144px}.suggestions-band:has(.chip)::before{left:-16px;right:-16px}.suggestions-band:has(.chip)::after{content:"";position:absolute;right:0;top:24px;bottom:0;width:32px;background:linear-gradient(to right,transparent,var(--bg));pointer-events:none}.suggestions-dock{padding-right:24px}}
+/* iter20: settings dividers straight at rest (round only the focus ring), Jo pill ~90% of the avatar, shorter chips band, denser first-load exchange. */
+.setting-row:focus-visible{border-radius:16px}
+.suggestions-dock:not(:empty){padding-top:6px}
+.app-header .name-pill{top:calc(100% - 8px);min-width:84px}
+.app-header{height:147px}
+main{padding-top:147px}
+@media(min-width:1024px){.app-header{height:172px}main{padding-top:172px}.app-header .name-pill{min-width:104px}.deal-line{padding:11px 0}.user-message{margin-bottom:26px}}
+@media(max-width:600px){.app-header{height:140px}main{padding-top:140px}.app-header .name-pill{top:calc(100% - 7px);min-width:86px}.suggestions-band:has(.chip)::after{top:6px}
+.user-message{margin-bottom:18px}.agent-byline{margin-bottom:8px}.pipeline-summary{margin:12px 0}.summary-head{padding-bottom:10px}.deal-line{padding:10px 0}.agent-copy{line-height:1.55}.pipeline-summary{padding:15px 17px 11px}}
+@media(max-width:359px){.pipeline-summary{padding:15px 14px 11px;margin-top:17px}.summary-head{padding-bottom:16px}}
+/* iter21: opaque chat dock, file/media library, tracking goals and header menus. */
+.bottom-dock:not(.no-composer)::after{content:"";position:absolute;left:0;right:0;top:var(--dock-cover-top,0px);bottom:0;background:var(--bg);z-index:-1;pointer-events:none}
+.app-header .name-pill{border:1px solid #c6c8cb}
+:root[data-theme=dark] .app-header .name-pill{border-color:#737a77}
+.next-step .text-link{padding-left:0}
+.app-header .workspace-label{margin-right:60px}
+.header-more{position:absolute;right:24px;top:22px}
+.popup-menu{position:fixed;z-index:30;min-width:178px;max-width:calc(100vw - 24px);padding:6px;border:1px solid var(--line);border-radius:18px;background:var(--bg);box-shadow:0 12px 32px #1112;animation:fade-in .15s ease-out}
+.popup-menu[hidden]{display:none}
+.popup-menu button{display:block;width:100%;min-height:44px;padding:10px 13px;text-align:left;border-radius:12px;font-size:14px}
+.library-tabs{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:22px}
+.library-tabs:before{width:calc((100% - 10px)/2)}
+.library-tabs button{font-size:15px;font-weight:600}
+.file-row{display:grid;grid-template-columns:minmax(0,1fr) 36px;align-items:center;gap:6px}
+.file-open{display:flex;align-items:center;gap:16px;width:100%;min-width:0;text-align:left;padding:14px 0;border-radius:12px}
+.file-art{width:48px;height:52px;flex-shrink:0}
+.file-copy{min-width:0}
+.file-copy h2{font-size:16px;line-height:1.4;letter-spacing:0}
+.file-copy p{font-size:13px;color:var(--muted);margin-top:4px}
+.row-more{display:grid;place-items:center;width:36px;height:40px;border-radius:20px;color:var(--muted)}
+.row-more .icon{width:20px;height:20px}
+.media-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}
+.media-tile{min-width:0;text-align:left;border-radius:18px;padding:0 0 8px;overflow:hidden}
+.media-art{display:block;width:100%;height:auto;aspect-ratio:4/3;border-radius:18px}
+.media-tile h2{font-size:14px;line-height:1.4;letter-spacing:0;margin:10px 6px 0}
+.media-tile p{font-size:12px;color:var(--muted);margin:4px 6px 0}
+.tracking-heading{display:flex;align-items:center;gap:10px;color:#278046;font-size:18px;margin:0 0 20px}
+.tracking-heading:before{content:"";width:24px;height:24px;border-radius:50%;background:radial-gradient(circle,#278046 0 3px,#e4f3e9 3.5px)}
+:root[data-theme=dark] .tracking-heading{color:#8ed7a4}
+.goal-row{display:grid;grid-template-columns:28px minmax(0,1fr) 36px;align-items:start;gap:11px;margin-bottom:16px}
+.goal-check{display:grid;place-items:center;width:28px;height:28px;margin-top:8px;cursor:pointer}
+.goal-check input{appearance:none;width:24px;height:24px;margin:0;border:2px solid #999f9c;border-radius:6px;cursor:pointer;background:var(--bg)}
+.goal-check input:checked{border-color:var(--sage-ink);background:var(--sage-ink)}
+.goal-check input:checked:after{content:"";display:block;width:6px;height:11px;border:solid var(--bg);border-width:0 2px 2px 0;transform:translate(6px,2px) rotate(45deg)}
+.goal-check:hover input{border-color:var(--text)}
+.goal-open{text-align:left;min-width:0;padding:9px 0;border-radius:10px;width:100%}
+.goal-open h3{font-size:17px;line-height:1.4}
+.goal-open p{color:var(--muted);font-size:14px;line-height:1.6;margin-top:5px}
+.goal-row.done h3{text-decoration:line-through;color:var(--muted)}
+.goal-row .row-more{margin-top:3px}
+.goals-empty{color:var(--muted);padding:12px 0;font-size:14px}
+.view-title h2.ideas-subtitle{margin-top:7px;font-size:13px;line-height:1.5;letter-spacing:0;font-weight:400;color:var(--muted)}
+@media(min-width:1024px){.header-more{right:35px;top:27px}}
+@media(max-width:600px){.header-more{right:18px;top:17px}.file-open{gap:13px}.file-copy h2{font-size:15px}.file-row{gap:3px}.goal-row{gap:9px}.goal-open h3{font-size:16px}}
 </style>
 </head>
 <body>
@@ -54,6 +122,8 @@ dialog[data-swap] .sheet-body{animation:swap-fwd .32s var(--ease) both}dialog[da
 <symbol id="i-goals" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m7 12 3.5 4L17 8"/></symbol>
 <symbol id="i-library" viewBox="0 0 24 24"><path d="m6 3 4 4-4 4-4-4 4-4Zm11 0 4 7h-8l4-7Z"/><circle cx="6" cy="17" r="4"/><rect x="13" y="13" width="8" height="8" rx="1.7"/></symbol>
 <symbol id="i-menu" viewBox="0 0 24 24"><path d="M5 8h14M5 16h14"/></symbol>
+<symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="19" cy="12" r="1.3" fill="currentColor"/></symbol>
+<symbol id="i-more-vertical" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="12" cy="19" r="1.3" fill="currentColor"/></symbol>
 <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-add" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 7v10m-5-5h10"/></symbol>
 <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
@@ -116,10 +186,11 @@ dialog[data-swap] .sheet-body{animation:swap-fwd .32s var(--ease) both}dialog[da
 <div class="sidebar-bottom"><button class="circle" id="open-settings" aria-label="Open Settings"><svg class="icon" aria-hidden="true"><use href="#i-gear"/></svg></button><input id="sidebar-search" type="search" placeholder="Search" aria-label="Search side chats"><button class="circle" id="new-chat" aria-label="New chat"><svg class="icon" aria-hidden="true"><use href="#i-new"/></svg></button></div><p class="sidebar-footer-label" id="workspace-footer">Personal workspace</p>
 </aside>
 <div class="app" id="app">
-<header class="app-header"><button class="circle menu-toggle" id="open-sidebar" aria-label="Open sidebar" aria-controls="sidebar" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg><span class="dot notice"></span></button><button class="companion" id="jo-button" aria-label="Jo — open Today activities" aria-haspopup="dialog"><svg class="jo-art" role="img" aria-label="Jo, a fluffy sage-green companion with a cream face and rosy cheeks"><use href="#jo-character"/></svg><span class="name-pill" id="jo-name">Jo</span></button><span class="workspace-label"><span class="dot"></span>Personal workspace</span></header>
+<header class="app-header"><button class="circle menu-toggle" id="open-sidebar" aria-label="Open sidebar" aria-controls="sidebar" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg><span class="dot notice"></span></button><button class="companion" id="jo-button" aria-label="Jo — open Today activities" aria-haspopup="dialog"><svg class="jo-art" role="img" aria-label="Jo, a fluffy sage-green companion with a cream face and rosy cheeks"><use href="#jo-character"/></svg><span class="name-pill" id="jo-name">Jo</span></button><span class="workspace-label"><span class="dot"></span>Personal workspace</span><button class="circle header-more" id="header-more" aria-label="More options" aria-haspopup="menu" aria-controls="options-menu" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#i-more"/></svg></button></header>
 <main id="main" tabindex="-1" aria-label="Main chat"></main>
-<footer class="bottom-dock" id="bottom-dock"><form class="composer" id="composer"><div class="suggestions-dock" id="suggestions-dock" aria-label="Suggested messages"></div><button type="button" id="attach" aria-label="Attach a file"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button><textarea rows="1" id="message-input" aria-label="Message Jo" placeholder="Ask Jo anything…"></textarea><button type="button" id="mic" aria-label="Try voice message"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg></button><button type="submit" class="send" id="send" aria-label="Send message" disabled><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg></button><input type="file" id="file-input" hidden></form><p class="composer-note">A little help for your working day.</p><nav class="bottom-nav" aria-label="Main navigation" id="bottom-nav"><span class="nav-segment" aria-hidden="true"></span></nav></footer>
+<footer class="bottom-dock" id="bottom-dock"><form class="composer" id="composer"><div class="suggestions-band"><div class="suggestions-dock" id="suggestions-dock" aria-label="Suggested messages"></div></div><button type="button" id="attach" aria-label="Attach a file"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button><textarea rows="1" id="message-input" aria-label="Message Jo" placeholder="Ask Jo anything…"></textarea><button type="button" id="mic" aria-label="Try voice message"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg></button><button type="submit" class="send" id="send" aria-label="Send message" disabled><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg></button><input type="file" id="file-input" hidden></form><p class="composer-note">A little help for your working day.</p><nav class="bottom-nav" aria-label="Main navigation" id="bottom-nav"><span class="nav-segment" aria-hidden="true"></span></nav></footer>
 </div>
+<div class="popup-menu" id="options-menu" role="menu" aria-label="Options" hidden></div>
 <dialog id="sheet" aria-labelledby="sheet-title"></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
@@ -136,6 +207,11 @@ const savedTabOrder=store.get('tabOrder',[]);
 if(Array.isArray(savedTabOrder)){const order=[...new Set([...savedTabOrder,...tabs.map(t=>t[0])])];tabs.sort((a,b)=>order.indexOf(a[0])-order.indexOf(b[0]))}
 const navTabs=tabs.filter(t=>t[0]!=='ideas');
 let spaces=store.get('spaces',[]);if(!Array.isArray(spaces))spaces=[];spaces=spaces.filter(s=>typeof s==='string'&&s.trim()&&s.length<=45);
+const libraryItems=[['Q3 pipeline review','Report · Saved today','report'],['Acme renewal agreement','Document · Saved today','docx'],['Weekly standup notes','Notes · Saved yesterday','md'],['AE onboarding playbook','Guide · Saved Monday','html']];
+const goalItems=[['Close $120k in Q3',68,'$81,600 closed · $38,400 to go'],['Onboard 2 AEs',50,'1 of 2 team members ready']];
+let libraryTab=store.get('libraryTab','files')==='media'?'media':'files',librarySort=store.get('librarySort','date')==='name'?'name':'date';
+let goalDone=store.get('goalDone',[]);if(!Array.isArray(goalDone))goalDone=[];
+let showCompleted=store.get('showCompleted',true)!==false,dealSortDesc=false,menuTrigger=null;
 const todayContext={todayTab:'activities',scrollTop:0};
 const scrollBehavior=()=>matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
 const sideChats=['Q3 pipeline review — Acme renewal','Weekly sales standup notes','Onboard new AE — Maya Chen','Renewal risk: Globex account','Design polish pass for TopSkills'];
@@ -165,7 +241,7 @@ function syncSidebar(){document.documentElement.classList.toggle('sidebar-open',
 function cancelJoTap(){clearTimeout(joTapTimer);joTapTimer=null}
 function setSidebar(open,focus=true){
  cancelJoTap();const app=$('#app'),desktop=innerWidth>=1024,changed=open!==sidebarOpen,rect=app.getBoundingClientRect(),oldCenter=rect.left+rect.width/2;
- sidebarOpen=open;if(desktop)store.set('sidebar',open);syncSidebar();
+ const pinned=active==='chat'&&exchangeTop>=0&&Math.abs(main.scrollTop-exchangeTop)<2;sidebarOpen=open;if(desktop)store.set('sidebar',open);syncSidebar();if(pinned)scrollToExchange();
  // Commit the dock width once; animate only the visual shift of the centred column.
  if(desktop&&changed){app.getAnimations().forEach(a=>a.cancel());if(!matchMedia('(prefers-reduced-motion: reduce)').matches){const shift=oldCenter-(app.offsetLeft+app.offsetWidth/2);app.animate([{transform:`translateX(${shift}px)`},{transform:'translateX(0)'}],{duration:350,easing:'cubic-bezier(.32,.72,.24,1)'})}}
  if(focus){if(open)$('#close-sidebar').focus({preventScroll:true});else $('#open-sidebar').focus({preventScroll:true})}
@@ -173,10 +249,28 @@ function setSidebar(open,focus=true){
 function renderNav(){navTabs.splice(0,navTabs.length,...tabs.filter(t=>t[0]!=='ideas'));for(const [key] of navTabs){const b=$('#bottom-nav button[data-tab="'+key+'"]');if(b)$('#bottom-nav').append(b)}const n=openSpaceIndex<0?navTabs.findIndex(t=>t[0]===active):-1;$('#bottom-nav').style.setProperty('--active',Math.max(0,n));$('.nav-segment').style.opacity=n<0?'0':'1';$$('#bottom-nav button').forEach(b=>{const yes=openSpaceIndex<0&&b.dataset.tab===active;if(yes)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')})}
 $('#bottom-nav').insertAdjacentHTML('beforeend',navTabs.map(([key,label,i])=>`<button data-tab="${key}" aria-label="${key==='chat'?'Chat':label}">${icon(i)}<span class="nav-label" aria-hidden="true">${key==='chat'?'Chat':label}</span></button>`).join(''));
 function saveScroll(){scrolls[active]=active==='chat'&&main.scrollHeight-main.scrollTop-main.clientHeight<4?Infinity:active==='chat'&&exchangeTop>=0&&Math.abs(main.scrollTop-exchangeTop)<2?'exchange':main.scrollTop}
-function scrollToExchange(){const q=$('.user-bubble',main);if(!q){main.scrollTop=main.scrollHeight;return}const gap=window.innerWidth>=1024?14:12;let y=0;for(let e=q;e&&e!==main;e=e.offsetParent)y+=e.offsetTop;main.scrollTop=Math.max(0,y-($('.app-header').offsetHeight+gap));exchangeTop=main.scrollTop}
+// Use layout coordinates so entrance transforms cannot perturb the initial pin.
+function contentY(el){let y=0;for(let e=el;e&&e!==main;e=e.offsetParent)y+=e.offsetTop;return y}
+function scrollToExchange(){
+ const q=$('.user-bubble',main);if(!q){main.scrollTop=main.scrollHeight;return}
+ syncDockH();syncChipsH();
+ const gap=innerWidth>=1024?14:12,header=$('.app-header').offsetHeight,band=$('.suggestions-band').getBoundingClientRect().top;
+ const ideal=Math.max(0,contentY(q)-header-gap);main.scrollTop=ideal;
+ const last=$('.agent-message:last-child',main),lastBottom=last?contentY(last)+last.offsetHeight-main.scrollTop:0;
+ if(lastBottom>band-4){
+  // On a short screen, place the cover at the nearest complete block edge.
+  // A row edge may hide later rows; the full exchange remains scrollable.
+  const boundaries=$$('.deal-line,.summary-head,.summary-footer,.agent-copy',main).flatMap(el=>[contentY(el),contentY(el)+el.offsetHeight]);
+  const max=main.scrollHeight-main.clientHeight;
+  const candidates=boundaries.map(y=>y-band+1).filter(y=>y>=0&&y<=max).sort((a,b)=>Math.abs(a-ideal)-Math.abs(b-ideal));
+  if(candidates.length)main.scrollTop=candidates[0];
+ }
+ exchangeTop=main.scrollTop;
+}
+
 let exchangeTop=-1;
 function restoreScroll(){const v=scrolls[active];if(v==='exchange'){scrollToExchange();return}exchangeTop=-1;main.scrollTop=v===undefined?0:v===Infinity?main.scrollHeight:v}
-function selectTab(key,spaceIndex=-1){cancelJoTap();saveScroll();if(openSpaceIndex>=0&&spaceIndex<0&&conversation==='space'){conversation='pipeline';threadTitle='Q3 pipeline review';messages=[]}if(openThread>=0&&!threadOpening){openThread=-1;if(conversation!=='new'&&conversation!=='space'){conversation='pipeline';threadTitle='Q3 pipeline review';messages=[]}}openSpaceIndex=spaceIndex;active=key;store.set('tab',key);store.set('openSpace',spaceIndex>=0?{index:spaceIndex,name:spaces[spaceIndex]}:null);renderSidebar();renderNav();renderView();if(innerWidth<1024&&sidebarOpen){setSidebar(false,false);main.focus({preventScroll:true})}}
+function selectTab(key,spaceIndex=-1){closeMenu(false);cancelJoTap();saveScroll();if(openSpaceIndex>=0&&spaceIndex<0&&conversation==='space'){conversation='pipeline';threadTitle='Q3 pipeline review';messages=[]}if(openThread>=0&&!threadOpening){openThread=-1;if(conversation!=='new'&&conversation!=='space'){conversation='pipeline';threadTitle='Q3 pipeline review';messages=[]}}openSpaceIndex=spaceIndex;active=key;store.set('tab',key);store.set('openSpace',spaceIndex>=0?{index:spaceIndex,name:spaces[spaceIndex]}:null);renderSidebar();renderNav();renderView();if(innerWidth<1024&&sidebarOpen){setSidebar(false,false);main.focus({preventScroll:true})}}
 const byline=()=>`<div class="agent-byline">${icon('spark','mini-star')}<span>${esc(joName)}</span></div>`;
 function summary(){return `<div class="pipeline-summary"><div class="summary-head"><div><h2>Q3 pipeline</h2><p>3 deals worth moving forward</p></div><div class="summary-total">$101,500<small>Total pipeline value</small></div></div>${[2,1,0].map(i=>`<button class="deal-line" data-deal="${i}" aria-label="${deals[i].company} — view deal"><div><h3>${deals[i].company}</h3><p>${deals[i].stage}</p></div><span class="amount">${money(deals[i].value)}${icon('arrow')}</span></button>`).join('')}<div class="summary-footer"><span>Q3 · Updated just now</span><button class="text-link" data-tab="crm">Open pipeline ${icon('arrow')}</button></div></div>`}
 const initialChat=()=>`<div class="user-message"><div class="user-bubble">Give me the Q3 pipeline review</div></div><article class="agent-message">${byline()}<p class="agent-copy">Here’s where things stand. You have <strong>$101,500</strong> across three open deals, with Acme closest to closing.</p>${summary()}<p class="agent-copy">I’d start with Acme’s renewal. A quick follow-up could bring it over the line.</p></article>`;
@@ -190,19 +284,19 @@ function renderView(){
  if(active==='chat'){renderChat();syncDockH();restoreScroll();return}
  const headers={crm:['Your pipeline','A little clarity on what’s moving.'],feed:['Feed','The latest from your working day.'],goals:['Goals','Good progress, one step at a time.'],library:['Library','The things you’ll want to come back to.'],ideas:['Ideas','Give your next good idea a place to grow.']};
  let content='';
- if(active==='crm')content=`<p class="stage-note">${icon('info')}<span>CRM is built in stages — Stage 1: pipeline view</span></p><div class="board">${deals.map((d,i)=>`<section class="stage-column" aria-label="${d.stage}"><h2 class="stage-heading">${d.stage}<small>1 deal</small></h2><button class="stage-card" data-deal="${i}" aria-label="${d.company} — view deal"><h3>${d.company}</h3><p class="deal-value">${money(d.value)}</p><div class="deal-owner"><span class="badge">${d.stage}</span><span class="initials" aria-label="Owner ${d.name}">${d.owner}</span></div></button></section>`).join('')}</div><div class="pipeline-bottom"><span>3 open deals</span><span>Total <strong>$101,500</strong></span></div>`;
+ if(active==='crm')content=`<p class="stage-note">${icon('info')}<span>CRM is built in stages — Stage 1: pipeline view</span></p><div class="board">${(dealSortDesc?[2,1,0]:[0,1,2]).map(i=>{const d=deals[i];return `<section class="stage-column" aria-label="${d.stage}"><h2 class="stage-heading">${d.stage}<small>1 deal</small></h2><button class="stage-card" data-deal="${i}" aria-label="${d.company} — view deal"><h3>${d.company}</h3><p class="deal-value">${money(d.value)}</p><div class="deal-owner"><span class="badge">${d.stage}</span><span class="initials" aria-label="Owner ${d.name}">${d.owner}</span></div></button></section>`}).join('')}</div><div class="pipeline-bottom"><span>3 open deals</span><span>Total <strong>$101,500</strong></span></div>`;
  if(active==='feed')content=`<form class="feed-prompt" id="feed-prompt-form"><input id="feed-prompt" type="text" aria-label="Feed prompt" placeholder="Make me a feed about my interests. Keep me up to date." enterkeyhint="send"></form><div class="feed-list">${[['Acme renewal approved','Ana Kim approved the renewal terms. The agreement is ready for your review.','8:24am','goals'],['Globex proposal viewed','Your proposal has been viewed twice. This could be a good moment to follow up.','8:10am','doc'],['Team standup notes','Three account updates, two next steps, and a clear plan for the week.','Yesterday','team']].map((c,i)=>`<button class="feed-row" data-feed="${i}"><span class="feed-icon" aria-hidden="true"><svg class="feed-art"><use href="#a-${c[3]}"/></svg></span><span class="feed-copy"><h2>${c[0]}</h2><p>${c[1]}</p><span class="card-meta">${c[2]}${i===0?'<span class="dot" aria-label="Unread"></span>':''}</span></span>${icon('arrow','feed-chev')}</button>`).join('')}</div>`;
- if(active==='goals')content=`<div class="list-stack">${[['Close $120k in Q3',68,'$81,600 closed · $38,400 to go'],['Onboard 2 AEs',50,'1 of 2 team members ready']].map((g,i)=>`<button class="content-card" data-goal="${i}"><div class="goal-title"><h2 style="font-size:18px">${g[0]}</h2><strong>${g[1]}%</strong></div><p>${g[2]}</p><div class="progress" role="progressbar" aria-label="${g[0]}" aria-valuenow="${g[1]}" aria-valuemin="0" aria-valuemax="100"><span style="width:${g[1]}%"></span></div><span class="card-foot">${i===0?'Q3 sales target':'Team growth'}${icon('arrow')}</span></button>`).join('')}</div>`;
- if(active==='library')content=`<div class="library-grid">${[['Q3 pipeline review','Report · Saved today','crm'],['Acme renewal agreement','Document · Saved today','doc'],['Weekly standup notes','Notes · Saved yesterday','feed'],['AE onboarding playbook','Guide · Saved Monday','team']].map((c,i)=>`<button class="content-card" data-library="${i}"><span class="document-icon">${icon(c[2])}</span><span><h2 style="font-size:15px">${c[0]}</h2><p>${c[1]}</p></span></button>`).join('')}</div>`;
+ if(active==='goals')content=renderGoals();
+ if(active==='library')content=renderLibrary();
  if(active==='ideas')content=`<div class="idea-list">${[['A warmer renewal experience','Send a personal account recap before the renewal conversation. Help customers see the value before talking numbers.','Help me explore an idea for a warmer renewal experience'],['A follow-up that moves the Globex proposal','James Tan checks in before the proposal goes cold. Name the decision date, the one open question, and what happens next — so the $32,500 proposal does not sit unread while the quarter moves on and the decision slips to next month.','Help me explore a follow-up idea for the Globex proposal'],['A sharper Q3 pipeline review for standup','Turn the standup into a decision meeting. Open with the number that moved, name the deal that needs help this week, and leave with a next step for each — Acme, Globex, and Initech, in that order, and write the decisions down before the week runs out.','Help me explore a sharper Q3 pipeline review']].map(i=>`<button class="idea-row" data-suggest="${esc(i[2])}"><h3>${i[0]}</h3><p>${i[1]}</p></button>`).join('')}</div><p class="ideas-intro">Ideas don’t have to be fully formed. Bring a thought to Jo and work it out together.</p><button class="secondary" data-suggest="Help me explore a new idea">Talk through an idea</button>`;
- main.innerHTML=`<section class="view"><div class="view-title"><h1>${headers[active][0]}</h1><p>${headers[active][1]}</p></div>${content}</section>`;restoreScroll();
+ main.innerHTML=`<section class="view"><div class="view-title"><h1>${headers[active][0]}</h1>${active==='ideas'?`<h2 class="ideas-subtitle">${headers[active][1]}</h2>`:`<p>${headers[active][1]}</p>`}</div>${content}</section>`;restoreScroll();
 }
 function scripted(text){const t=text.toLowerCase();if(t.includes('draft')||t.includes('email'))return 'Here’s a draft for Ana to review:\n\nSubject: Let’s make your next chapter with Acme a great one\n\nHi Alex,\nThanks for the conversation about your renewal. I’ve outlined the next steps and am checking the proposed discount with our team. Once approved, I’ll send the final agreement for your review.\n\nWould Thursday work for a quick call?\nBest, Ana\n\nSaved here as a draft. Nothing has been sent.';if(t.includes('risk'))return 'Globex is the one to watch. The $32,500 proposal has been viewed twice, but there’s no confirmed decision date. Ask James Tan to check in today.\n\nAcme’s $48,000 renewal is progressing, with the $4,800 discount awaiting approval.';if(t.includes('call'))return 'Today’s call recap:\n\n• Initech — 18-minute discovery call at 9:42am. Maya will confirm scope and budget.\n• Acme — renewal terms are ready for review; Ana is waiting for discount approval.\n\nNext: log the Initech outcome and follow up on Acme.';if(t.includes('pipeline')||t.includes('q3'))return 'Your open Q3 pipeline totals $101,500. Acme is in Negotiation, Globex is in Proposal, and Initech is in Discovery. Acme’s discount approval is the most immediate next step.';if(t.includes('globex'))return 'A short check-in works best here. Ask James Tan to confirm the decision date and the one open question, then name what happens next.\n\nThe $32,500 proposal was viewed twice today — a nudge now keeps it from going cold while the quarter moves on.';if(t.includes('idea'))return 'Let’s give it some shape. Who would this help, and what would be easier for them?\n\nFor the renewal experience, a useful first experiment would be a short value recap for Acme before the next call.';return 'I’ve added that to our conversation. In this demo, I can help with the Q3 pipeline, an Acme renewal email, at-risk deals, or today’s calls. Which would you like to work on?'}
 function sendMessage(text){text=text.trim();if(!text||pending)return;if(active!=='chat')selectTab('chat');const full=text+(attachment?'\nAttached: '+attachment:'');attachment='';input.placeholder='Ask '+joName+' anything…';messages.push({role:'user',text:full});input.value='';$('#send').disabled=true;pending=true;const log=$('#messages');log.insertAdjacentHTML('beforeend',messageHTML(messages[messages.length-1])+typingHTML());scrollToLatest(scrollBehavior());setTimeout(()=>{const reply={role:'agent',text:scripted(text),pipeline:/pipeline|q3/i.test(text)&&conversation!=='pipeline'};messages.push(reply);pending=false;if(active==='chat'){$('#typing')?.remove();$('#messages').insertAdjacentHTML('beforeend',messageHTML(reply));scrollToLatest(scrollBehavior())}$('#jo-button').classList.remove('happy');void $('#jo-button').offsetWidth;$('#jo-button').classList.add('happy');setTimeout(()=>$('#jo-button').classList.remove('happy'),700);$('#send').disabled=!input.value.trim()},950)}
 function startThread(index){if(pending){announce('Jo is finishing a reply. Try again in a moment.');return}conversation=index===0?'pipeline':String(index);threadTitle=sideChats[index];messages=[];threadOpening=true;openThread=index;selectTab('chat');threadOpening=false;scrollToLatest()}
 function freshChat(title='New chat',spaceIndex=-1){if(pending){announce('Jo is finishing a reply. Try again in a moment.');return}openThread=-1;conversation=spaceIndex>=0?'space':'new';threadTitle=title;messages=[];selectTab('chat',spaceIndex);main.scrollTop=0;scrolls.chat=0;input.focus()}
 function sheetTop(title,back=false){return `<header class="sheet-top">${back?`<button class="circle sheet-back" data-action="settings-back" aria-label="Back to Settings">${icon('back')}</button>`:''}<h1 id="sheet-title">${esc(title)}</h1><button class="circle close-sheet" data-action="close" aria-label="Close ${esc(title)}">${icon('close')}</button></header>`}
-function showSheet(kind,html,compact=false,dir=''){cancelJoTap();if(sheet.open&&sheetKind==='today'&&kind!=='today'){todayContext.todayTab=todayTab;todayContext.scrollTop=$('.today-body',sheet).scrollTop}clearTimeout(closeTimer);if(sheet.open&&dir)sheet.dataset.swap=dir;else delete sheet.dataset.swap;if(!sheet.open)returnFocus=document.activeElement;sheetKind=kind;sheetDetail='';sheet.className=compact?'compact-sheet':'';sheet.innerHTML=html;if(!sheet.open)sheet.showModal();requestAnimationFrame(()=>{const f=$('[data-autofocus]',sheet)||$('button,input,textarea',sheet);f?.focus({preventScroll:true})})}
+function showSheet(kind,html,compact=false,dir=''){closeMenu(false);cancelJoTap();if(sheet.open&&sheetKind==='today'&&kind!=='today'){todayContext.todayTab=todayTab;todayContext.scrollTop=$('.today-body',sheet).scrollTop}clearTimeout(closeTimer);if(sheet.open&&dir)sheet.dataset.swap=dir;else delete sheet.dataset.swap;if(!sheet.open)returnFocus=document.activeElement;sheetKind=kind;sheetDetail='';sheet.className=compact?'compact-sheet':'';sheet.innerHTML=html;if(!sheet.open)sheet.showModal();requestAnimationFrame(()=>{const f=$('[data-autofocus]',sheet)||$('button,input,textarea',sheet);f?.focus({preventScroll:true})})}
 function closeSheet(){if(!sheet.open||sheet.classList.contains('closing'))return;sheet.classList.add('closing');const finish=()=>{sheet.close();sheet.className='';sheetKind='';if(returnFocus?.isConnected&&!returnFocus.closest('[inert]'))returnFocus.focus({preventScroll:true});else $('#jo-button').focus({preventScroll:true})};if(matchMedia('(prefers-reduced-motion: reduce)').matches)finish();else closeTimer=setTimeout(finish,220)}
 function openDeal(index){const d=deals[index];showSheet('deal',sheetTop(d.company)+`<div class="sheet-body deal-detail"><span class="badge">${d.stage}</span><div class="deal-detail-value">${money(d.value)}</div><dl class="deal-facts"><div><dt>Owner</dt><dd><span class="initials">${d.owner}</span>${d.name}</dd></div><div><dt>Pipeline</dt><dd>Q3 · Open deal</dd></div></dl><div class="next-step"><h2>Next step</h2><p>${d.next}</p><button class="text-link" data-deal-ask="${index}">Work on this with Jo ${icon('arrow')}</button></div><h2>Activity</h2>${d.activity.map((a,i)=>`<div class="simple-activity">${icon(i===0?'clock':'doc')}<div><h3>${a.split(' · ')[0]}</h3><p>${a.split(' · ')[1]}</p></div></div>`).join('')}</div>`)}
 const activities=[['Log call with Initech','Call ended 9:42am, 18 min','9:50am'],['Approve Acme renewal discount','Discount request $4,800 — from Ana Kim','8:24am'],['Follow up Globex proposal','Proposal viewed twice today','8:10am'],['Prepare Q3 pipeline review','Due before standup','7:55am'],["Review Maya’s onboarding checklist",'Day 3 of 5','7:30am']];
@@ -233,6 +327,64 @@ function settingDetail(label){const swapDir=sheetDetail?'':'fwd';if(!sheetDetail
 }
 function openContent(kind,index){const libraryTitles=['Q3 pipeline review','Acme renewal agreement','Weekly standup notes','AE onboarding playbook'];let title='',copy='';if(kind==='library'){title=libraryTitles[index];copy=['Your open Q3 pipeline totals $101,500 across three deals. Acme Corp: $48,000 in Negotiation. Globex: $32,500 in Proposal. Initech: $21,000 in Discovery.','Acme’s $48,000 renewal is in Negotiation. The proposed $4,800 discount awaits approval. Ana Kim will send the agreement once the final terms are confirmed.','Ana: finalise Acme renewal terms. James: follow up on the Globex proposal. Maya: confirm Initech scope and budget. Next standup: review progress on all three.','Day 1: workspace and team introductions. Day 2: sales process and product training. Day 3: shadow a discovery call. Day 4: account planning. Day 5: first independent customer conversation.'][index]}else if(kind==='feed'){title=['Acme renewal approved','Globex proposal viewed','Team standup notes'][index];copy=['Ana approved the renewal terms in this sample feed. The $4,800 discount remains in your approval queue. Review the terms with Jo before sending the agreement.','The $32,500 Globex proposal was viewed twice today. James Tan owns the next step: confirm the decision date and ask about any open questions.','Ana is working on Acme, James is following up with Globex, and Maya is progressing through her onboarding checklist. Review the pipeline before your next standup.'][index]}else{title=index===0?'Close $120k in Q3':'Onboard 2 AEs';copy=index===0?'You’ve closed $81,600 of your $120,000 target. That’s 68%, with $38,400 to go. Your $101,500 open pipeline gives you room to reach the goal. Focus first on Acme’s renewal.':'One of two account executives is fully onboarded. Maya Chen is on day 3 of 5. Next: shadow a renewal call and review the Q3 account plan.'}showSheet('content',sheetTop(title)+`<div class="sheet-body"><div class="detail-block" style="padding:0"><h2>${kind==='goals'?'Your progress':'At a glance'}</h2><p>${copy}</p><button class="primary" data-context="${esc(title)}">Discuss with Jo</button></div></div>`)}
 function openSpace(){showSheet('space',sheetTop('Create a space')+`<div class="sheet-body"><p class="muted" style="margin-bottom:20px">A home for a project, a topic, or a thought.</p><form id="space-form"><label class="field">Space name<input class="text-input" id="space-name" placeholder="e.g. Customer insights" maxlength="45" required data-autofocus></label><button class="primary" type="submit">Create space</button></form></div>`,true)}
+function fileArt(kind){
+ const color={report:'#eaf0e7',docx:'#4279e8',md:'#f4f4f3',html:'#333e9d'}[kind];
+ const ink=kind==='md'?'#656970':kind==='report'?'#49634b':'#fff';
+ const face=kind==='report'?'<rect x="17" y="16" width="15" height="3" rx="1.5"/><rect x="17" y="24" width="4" height="13" rx="1"/><rect x="24" y="21" width="4" height="16" rx="1"/><rect x="31" y="28" width="4" height="9" rx="1"/>':`<text x="25" y="34" text-anchor="middle" font-size="${kind==='html'?15:12}" font-family="system-ui,sans-serif" font-weight="700">${kind==='docx'?'W':kind==='md'?'MD':'{}'}</text>`;
+ return `<svg class="file-art" viewBox="0 0 48 52" aria-hidden="true"><path d="M12 4h18l10 10v29a5 5 0 0 1-5 5H12a5 5 0 0 1-5-5V9a5 5 0 0 1 5-5Z" fill="${color}" stroke="${kind==='md'?'#d8dbd9':color}"/><path d="M30 4v7a3 3 0 0 0 3 3h7" fill="${kind==='md'?'#fff':'#ffffff55'}"/><g fill="${ink}">${face}</g>${kind==='docx'?'<rect x="3" y="24" width="13" height="17" rx="3" fill="#244f9d"/><text x="9.5" y="36" text-anchor="middle" font-size="10" font-family="system-ui" font-weight="700" fill="#fff">W</text>':''}</svg>`;
+}
+function mediaArt(i){
+ const scenes=[
+  '<rect x="34" y="30" width="132" height="88" rx="12" fill="#fffaf0"/><rect x="49" y="44" width="63" height="5" rx="2.5" fill="#8aa07f"/><rect x="50" y="84" width="20" height="19" rx="4" fill="#c3d3b5"/><rect x="80" y="70" width="20" height="33" rx="4" fill="#9db590"/><rect x="110" y="57" width="20" height="46" rx="4" fill="#76956b"/><circle cx="157" cy="106" r="16" fill="#e7c99a"/><path d="m151 106 4 4 8-9" fill="none" stroke="#647b59" stroke-width="3" stroke-linecap="round"/>',
+  '<rect x="54" y="24" width="90" height="102" rx="10" fill="#fffaf0"/><rect x="69" y="43" width="48" height="5" rx="2.5" fill="#9eafbd"/><path d="M69 63h58M69 75h58M69 87h35" stroke="#c6d0d5" stroke-width="4" stroke-linecap="round"/><circle cx="146" cy="108" r="22" fill="#b8c9b2"/><path d="m135 109 7 7 14-17" fill="none" stroke="#516c4c" stroke-width="4" stroke-linecap="round"/>',
+  '<rect x="35" y="29" width="130" height="94" rx="12" fill="#fffaf0"/><rect x="50" y="46" width="69" height="5" rx="2.5" fill="#ab9a88"/><circle cx="54" cy="69" r="4" fill="#a3b692"/><circle cx="54" cy="88" r="4" fill="#a3b692"/><path d="M67 69h76M67 88h52" stroke="#d1c7b8" stroke-width="4" stroke-linecap="round"/><path d="m141 99 19-20 8 8-19 20-12 4Z" fill="#9db692"/>',
+  '<rect x="36" y="32" width="128" height="87" rx="11" fill="#fffaf0"/><path d="M100 42v68" stroke="#d4d1ba" stroke-width="2"/><rect x="48" y="51" width="39" height="5" rx="2.5" fill="#9cae8d"/><path d="M48 67h36M48 79h36M48 91h25" stroke="#d5d9c5" stroke-width="4" stroke-linecap="round"/><circle cx="132" cy="69" r="13" fill="#b9c9ab"/><path d="M114 102a18 18 0 0 1 36 0" fill="#b9c9ab"/>'
+ ];
+ return `<svg class="media-art" viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" rx="18" fill="${['#e5eddf','#e4ebf0','#eee5da','#e9eadb'][i]}"/>${scenes[i]}</svg>`;
+}
+function renderLibrary(){
+ const order=libraryItems.map((_,i)=>i);if(librarySort==='name')order.sort((a,b)=>libraryItems[a][0].localeCompare(libraryItems[b][0]));
+ const files=order.map(i=>{const c=libraryItems[i];return `<div class="file-row"><button class="file-open" data-library="${i}">${fileArt(c[2])}<span class="file-copy"><h2>${c[0]}</h2><p>${c[1]}</p></span></button><button class="row-more" data-library="${i}" aria-label="More about ${c[0]}">${icon('more-vertical')}</button></div>`}).join('');
+ const media=order.map(i=>{const c=libraryItems[i];return `<button class="media-tile" data-library="${i}">${mediaArt(i)}<h2>${c[0]}</h2><p>${c[1]}</p></button>`}).join('');
+ return `<div class="segmented library-tabs" role="group" aria-label="Library view" style="--segment:${libraryTab==='media'?1:0}"><button data-library-tab="files" aria-pressed="${libraryTab==='files'}" aria-controls="library-content">Files</button><button data-library-tab="media" aria-pressed="${libraryTab==='media'}" aria-controls="library-content">Media</button></div><div id="library-content" class="${libraryTab==='files'?'file-list':'media-grid'}" aria-label="${libraryTab==='files'?'Files':'Media'}">${libraryTab==='files'?files:media}</div>`;
+}
+function renderGoals(){
+ const rows=goalItems.map((g,i)=>{const done=goalDone.includes(i);if(done&&!showCompleted)return '';return `<div class="goal-row ${done?'done':''}"><label class="goal-check"><input type="checkbox" data-goal-check="${i}" aria-label="Mark ${g[0]} ${done?'not done':'done'}" ${done?'checked':''}></label><button class="goal-open" data-goal="${i}"><h3>${g[0]}</h3><p>${g[1]}% · ${g[2]}</p></button><button class="row-more" data-goal-menu="${i}" aria-label="Options for ${g[0]}" aria-haspopup="menu" aria-controls="options-menu" aria-expanded="false">${icon('more-vertical')}</button></div>`}).join('');
+ return `<section aria-labelledby="tracking-title"><h2 class="tracking-heading" id="tracking-title">Tracking</h2>${rows||'<p class="goals-empty">All goals complete. Turn on “Show completed” in the options menu to see them.</p>'}</section>`;
+}
+function toggleGoal(i){goalDone=goalDone.includes(i)?goalDone.filter(n=>n!==i):[...goalDone,i];store.set('goalDone',goalDone);renderView();const check=$('[data-goal-check="'+i+'"]');(check||$('#header-more')).focus({preventScroll:true});announce(goalItems[i][0]+(goalDone.includes(i)?' · marked done':' · tracking again'))}
+function closeMenu(focus=true){const menu=$('#options-menu');if(menu.hidden)return;menu.hidden=true;menuTrigger?.setAttribute('aria-expanded','false');if(focus&&menuTrigger?.isConnected)menuTrigger.focus({preventScroll:true});menuTrigger=null}
+function openMenu(trigger,goalIndex=null){
+ const menu=$('#options-menu');if(!menu.hidden&&menuTrigger===trigger){closeMenu();return}closeMenu(false);menuTrigger=trigger;
+ let actions=goalIndex!==null?[[goalDone.includes(goalIndex)?'Mark not done':'Mark done','goal-toggle'],['View details','goal-details']]:[['New chat','new'],['Open Settings','settings']];
+ if(goalIndex===null){const extra={library:['Sort by name','library-sort'],goals:['Show completed','goals-show'],feed:['Refresh feed','feed-refresh'],crm:['Sort by value','crm-sort']}[active];if(extra)actions.push(extra)}
+ menu.innerHTML=actions.map(([label,action])=>{const checked=action==='library-sort'?librarySort==='name':action==='goals-show'?showCompleted:action==='crm-sort'?dealSortDesc:null;return `<button role="${checked===null?'menuitem':'menuitemcheckbox'}" ${checked===null?'':`aria-checked="${checked}"`} data-menu-action="${action}" ${goalIndex===null?'':`data-menu-goal="${goalIndex}"`}>${label}</button>`}).join('');
+ trigger.setAttribute('aria-expanded','true');menu.hidden=false;const r=trigger.getBoundingClientRect();menu.style.left=Math.max(12,Math.min(innerWidth-menu.offsetWidth-12,r.right-menu.offsetWidth))+'px';menu.style.top=Math.max(12,Math.min(innerHeight-menu.offsetHeight-12,r.bottom+8))+'px';$('button',menu).focus({preventScroll:true});
+}
+$('#header-more').onclick=e=>openMenu(e.currentTarget);
+$('#options-menu').addEventListener('click',e=>{
+ const b=e.target.closest('[data-menu-action]');if(!b)return;const a=b.dataset.menuAction,i=Number(b.dataset.menuGoal);closeMenu();
+ if(a==='new')freshChat();if(a==='settings')openSettings();
+ if(a==='goal-toggle')toggleGoal(i);if(a==='goal-details')openContent('goals',i);
+ if(a==='library-sort'){librarySort=librarySort==='name'?'date':'name';store.set('librarySort',librarySort);renderView();announce('Library sorted by '+(librarySort==='name'?'name':'saved date'))}
+ if(a==='goals-show'){showCompleted=!showCompleted;store.set('showCompleted',showCompleted);renderView();announce(showCompleted?'Completed goals shown':'Completed goals hidden')}
+ if(a==='feed-refresh'){renderView();announce('Feed refreshed · you’re up to date')}
+ if(a==='crm-sort'){dealSortDesc=!dealSortDesc;renderView();announce('Deals sorted by value · '+(dealSortDesc?'highest first':'lowest first'))}
+});
+document.addEventListener('pointerdown',e=>{if(!$('#options-menu').contains(e.target)&&!menuTrigger?.contains(e.target))closeMenu(false)});
+document.addEventListener('keydown',e=>{
+ const menu=$('#options-menu');if(menu.hidden)return;
+ if(e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();closeMenu();return}
+ if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const items=$$('button',menu),index=items.indexOf(document.activeElement);items[e.key==='Home'?0:e.key==='End'?items.length-1:(index+(e.key==='ArrowDown'?1:-1)+items.length)%items.length].focus()}
+ if(e.key==='Tab')closeMenu(false);
+},true);
+main.addEventListener('scroll',()=>closeMenu(false),{passive:true});window.addEventListener('resize',()=>closeMenu(false));
+main.addEventListener('change',e=>{if(e.target.matches('[data-goal-check]'))toggleGoal(Number(e.target.dataset.goalCheck))});
+main.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.libraryTab){libraryTab=b.dataset.libraryTab;store.set('libraryTab',libraryTab);const group=$('.library-tabs');group.style.setProperty('--segment',libraryTab==='media'?1:0);$$('[data-library-tab]').forEach(el=>el.setAttribute('aria-pressed',el.dataset.libraryTab===libraryTab));const fresh=document.createElement('div');fresh.innerHTML=renderLibrary();$('#library-content').replaceWith($('#library-content',fresh))}
+ if(b.dataset.goalMenu!==undefined)openMenu(b,Number(b.dataset.goalMenu));
+});
 $('#open-sidebar').onclick=()=>setSidebar(true);$('#close-sidebar').onclick=()=>setSidebar(false);$('#drawer-backdrop').onclick=()=>setSidebar(false);$('#open-settings').onclick=()=>openSettings();$('#create-space').onclick=openSpace;$('#new-chat').onclick=()=>freshChat();$('#sidebar-search').oninput=renderChats;$('#jo-button').onclick=tapJo;$('.skip-link').onclick=e=>{e.preventDefault();main.focus()};
 $('#composer').onsubmit=e=>{e.preventDefault();sendMessage(input.value)};input.oninput=()=>{$('#send').disabled=pending||!input.value.trim()};input.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();sendMessage(input.value)}};
 main.addEventListener('submit',e=>{if(e.target.id==='feed-prompt-form'){e.preventDefault();sendMessage($('#feed-prompt').value)}});
@@ -276,8 +428,9 @@ setWorkspace(store.get('workspace','Personal workspace'));
 renderSidebar();renderNav();syncSidebar();renderView();
 // Keep the end of the thread clear when the dock wraps or the viewport changes.
 function syncDockSize(name,height){const atEnd=active==='chat'&&main.scrollHeight-main.scrollTop-main.clientHeight<4;document.documentElement.style.setProperty(name,height+'px');if(atEnd)main.scrollTop=main.scrollHeight}
-function syncDockH(){syncDockSize('--dock-h',$('#bottom-dock').offsetHeight)}
-function syncChipsH(){syncDockSize('--chips-h',$('#suggestions-dock').offsetHeight)}
+function syncDockCover(){const dock=$('#bottom-dock');const top=$('.suggestions-band').getBoundingClientRect().top-dock.getBoundingClientRect().top;dock.style.setProperty('--dock-cover-top',Math.min(0,top)+'px')}
+function syncDockH(){syncDockSize('--dock-h',$('#bottom-dock').offsetHeight);syncDockCover()}
+function syncChipsH(){syncDockSize('--chips-h',$('#suggestions-dock').offsetHeight);syncDockCover()}
 function scrollToLatest(behavior='auto'){exchangeTop=-1;syncDockH();syncChipsH();main.scrollTo({top:main.scrollHeight,behavior})}
 syncDockH();new ResizeObserver(()=>{syncDockH();placeToast()}).observe($('#bottom-dock'));new ResizeObserver(syncChipsH).observe($('#suggestions-dock'));window.addEventListener('resize',()=>{placeToast();if(active==='chat'&&exchangeTop>=0&&Math.abs(main.scrollTop-exchangeTop)<2)scrollToExchange()});
 </script>
