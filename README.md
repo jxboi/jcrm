@@ -4,18 +4,36 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter24):** scored 9.1/11 (blind score, Opus 5.5, live, on the
-official rubric — target every category ≥ 9.5, not met). Layout 9,
-Visual 8, Content 9, Component 9, Imagery 9, Interaction 9,
-Responsive 10, Accessibility 9, Design 9, Completeness 9,
-Performance 10. Overall 9.1 — a dip from the iter17–18–20–23 best
-of 9.4. This is the latest of the iter22–24 batch (Jia's batch rule:
-complete 3 iterations, then push once), so the live page tracks iter24
-even though iter22 (9.2) and iter23 (9.4) were scored in the same batch.
-The scorer's biggest gap (Visual 8 — the Jo pill's missing outline and
-the title weights) did not hold against the references: the ring it saw
-is our own old build's pill, the real Muse pill is borderless, and the
-reference titles and row names are bold.
+**Latest (iter27):** scored 8.8/11 (blind score, Opus 5.5, live, on the
+official rubric — target every category ≥ 9.5, not met). Layout 8.8,
+Visual 8.3, Content 8.8, Component 9.0, Imagery 8.0, Interaction 9.0,
+Responsive 9.0, Accessibility 8.3, Design 8.7, Completeness 9.0,
+Performance 10.0. Overall 8.8 — the same as iter26 and below the
+iter17–18–20–23 best of 9.4. This is the latest of the iter25–27 batch
+(Jia's batch rule: complete 3 iterations, then push once), so the live
+page tracks iter27 even though iter25 (9.0, Fable 5.2) and iter26 (8.8)
+were scored in the same batch. The scorer's biggest gap (Visual 8.3 /
+Design 8.7 — the drawer dim "inverts" the reference) is half right on
+verification: the reference peek's text IS grey (120–132) and the build
+matches it (129), but the reference peek's background stays bright white
+(253) while the build's scrim greys it to 225 — the dim mechanism
+differs (Muse fades the chat; the build veils it). The Today-order
+deduction (Content 8.8) does not hold — the list is time-sorted by
+design.
+
+## What's in iter27
+
+Iter27 fixes the drawer-open state Jia found from his two phone
+screenshots. The chat behind the open drawer now dims — the peeking text
+renders grey 129 on grey 225 at 390 in light mode (134 on near-black in
+dark, same at 320) — and the open drawer shows no hamburger. Closing
+still works by tapping the dimmed chat or pressing Escape, with focus
+returning to the menu button, and opening moves focus to the first
+drawer tab. The push-aside card (325px shift, 0.96 scale, rounded
+corner) is unchanged. A new generic treatment snapshot now samples the
+computed colour, fill and opacity of what is visible in every rendered
+state (drawer open, Today, Settings, dark mode) — the drawer dim is the
+first defect it catches.
 
 ## What's in iter24
 
