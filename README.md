@@ -4,22 +4,38 @@ A mobile-first enterprise web app where users talk to their personal AI
 agent for work — with a built-in CRM added in stages.
 
 **Status:** frontend-only UI prototype, design hill climb in progress.
-**Latest (iter27):** scored 8.8/11 (blind score, Opus 5.5, live, on the
-official rubric — target every category ≥ 9.5, not met). Layout 8.8,
-Visual 8.3, Content 8.8, Component 9.0, Imagery 8.0, Interaction 9.0,
-Responsive 9.0, Accessibility 8.3, Design 8.7, Completeness 9.0,
-Performance 10.0. Overall 8.8 — the same as iter26 and below the
-iter17–18–20–23 best of 9.4. This is the latest of the iter25–27 batch
-(Jia's batch rule: complete 3 iterations, then push once), so the live
-page tracks iter27 even though iter25 (9.0, Fable 5.2) and iter26 (8.8)
-were scored in the same batch. The scorer's biggest gap (Visual 8.3 /
-Design 8.7 — the drawer dim "inverts" the reference) is half right on
-verification: the reference peek's text IS grey (120–132) and the build
-matches it (129), but the reference peek's background stays bright white
-(253) while the build's scrim greys it to 225 — the dim mechanism
-differs (Muse fades the chat; the build veils it). The Today-order
-deduction (Content 8.8) does not hold — the list is time-sorted by
-design.
+**Latest (iter30):** scored 9.0/11 (blind score, Fable 5.2, live, on the
+official rubric — target every category ≥ 9.5, not met). Layout 9.0,
+Visual 8.5, Content 9.5, Component 9.0, Imagery 8.5, Interaction 9.0,
+Responsive 9.5, Accessibility 9.0, Design 8.5, Completeness 9.0,
+Performance 10.0. Overall 9.0 — the first 9 or better since iter15,
+still below the iter17–18–20–23 best of 9.4. This is
+the latest of the iter28–30 batch (Jia's batch rule: complete 3
+iterations, then push once), so the live page tracks iter30 even though
+iter28 (8.9) and iter29 (8.8) were scored in the same batch. The
+scorer's biggest gap is the header name pill: it now overlaps Jo by
+10px on phone, 10px on tablet and 11px on desktop, where the scorer
+estimated the reference at 15–17%. The claims check reverses that
+direction — measured against the disc itself, the reference pill sits
+at the disc's bottom edge with ~0px tuck, overlapping only the fur by a
+few pixels, so the next fix lowers the pill ~10px rather than lifting
+it. The scorer's "hairline border" recommendation does not hold (7th
+disproof — the reference pill is borderless and translucent, like the
+build's). Two new genuine findings stand: an axe `region` violation
+when the More options menu is open, and a 0.0369 layout shift on some
+desktop loads.
+
+## What's in iter30
+
+Iter30 makes one change: the Jo name pill moves up ~5–6px at phone and
+desktop so it overlaps the avatar disc by 10px at 390, 10px at 768 and
+11px at 1440 — about a quarter of the pill's height at all three
+widths, still with no border. The fade at short heights, the drawer
+dim, the sidebar roles, the heading and every other fix hold unchanged,
+and speed is clean (load 780ms, slowest interaction 48ms, no
+accessibility violations in 7 states). Fable 5.2 scored it 9.0 — the
+first 9 or better since iter15, with Content 9.5, Responsive 9.5 and
+Performance 10 at or above the 9.5 target.
 
 ## What's in iter27
 
